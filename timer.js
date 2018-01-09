@@ -188,7 +188,7 @@ Timer.prototype._runSchedule = function(schedule) {
         if (hours && hours.length > 0) {
             var b = false;
             if (hours.indexOf(hour) !== -1) {      
-                if ((!minutes && minute !== 0) || (!seconds && second !== 0)) {
+                if ((!minutes && minute !== 0) || (!minutes && !seconds && second !== 0)) {
                     b = false;
                 } else {
                     b = true;
