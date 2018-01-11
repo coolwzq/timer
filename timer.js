@@ -71,8 +71,8 @@ Timer.prototype._parseRuleItem = function(ruleItem) {
             rule.push(ruleItem);
         } else if (typeof ruleItem === 'string') {
             var items = ruleItem.split('-');
-            var start = items[0],
-                end = items[1];
+            var start = parseInt(items[0]),
+                end = parseInt(items[1]);
             for (var i = start; i <= end; i++) {
                 rule.push(i);
             }
