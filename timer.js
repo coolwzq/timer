@@ -7,12 +7,12 @@
 function Timer(mode) {
     var mode = mode || 1;
     if (mode === 1) {
-        this._timeout = (requestAnimationFrame ||
+        this._tick = (requestAnimationFrame ||
             webkitRequestAnimationFrame ||
             mozRequestAnimationFrame ||
             oRequestAnimationFrame).bind(window);
 
-        this._clearTimeout = (cancelAnimationFrame ||
+        this._clearTick = (cancelAnimationFrame ||
             webkitCancelAnimationFrame ||
             mozCancelAnimationFrame ||
             oCancelAnimationFrame).bind(window);
@@ -38,7 +38,7 @@ Timer.prototype.start = function() {
     this.incrementId = 0;
     var _this = this;
     function nextTick() {
-        _this.timerHandle = _this._timeout(nextTick);
+        _this.timerHandle = _this._tick(nextTick);
     
         for (var i = 0; i < _this.scheduleQuene.length; i++) {
             _this._runSchedule(_this.scheduleQuene[i]);
@@ -54,7 +54,7 @@ Timer.prototype.start = function() {
  */
 Timer.prototype.stop = function() {
     if (this.timerHandle) {
-        this._clearTimeout(this.timerHandle);
+        this._clearTick(this.timerHandle);
     }
     return this;
 }
