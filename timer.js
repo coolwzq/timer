@@ -18,10 +18,10 @@ function Timer(mode) {
             oCancelAnimationFrame).bind(window);
 
     } else {
-        this._timeout = function (callback) {
+        this._tick = function (callback) {
             return setTimeout(callback, 1000 / 60);
         }
-        this._clearTimeout = function(id) {
+        this._clearTick = function(id) {
             return clearTimeout(id);
         }
     }
